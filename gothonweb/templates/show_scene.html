@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+{% if scene %}
+  <h1>{{ scene.title }}</h1>
+  <pre>{{ scene.description }}</pre>
+  {% if scene.urlname == "death" %}
+    <p><a href="/">Maybe wake up from another body?</a></p>
+  {% elif scene.urlname == "the_end_winner" %}
+    <p><a href="/">Again!</a></p>
+  {% elif scene.urlname == "start_page" %}
+  <form action="/game" method="POST">
+    <div><button type = "submit" name="userinput" value = "1">Stasis Chamber</button></div>
+    <br>
+    <div><button type = "submit" name="userinput" value = "2">Steel Cage</button></div>
+  </form>
+  {% elif scene.urlname == "bags_death" %}
+    <p><a href="/">I wish I could start all over again...</a></p>
+  {% else %}
+    <p>
+      <form action="/game" method="POST">
+      <p><font color="#4682B4">What do you do?</font></p>
+      <div><input type="text" name="userinput"> <input type="SUBMIT" value="DO IT!">&nbsp;&nbsp;&nbsp;<button type="button" onclick="alert('***I am the Helping Fairy!***\nI cant get you out from here but I can tell you what to do!\nIf you see a number is before a choice, simply type in the number of your choice into the magic box and hit DO IT!\nIf there is no choice, you are probably asked for words or numbers.\nThat is all I can tell. The rest is on your own! Good Luck!')">Help!</button></div>
+      </form>
+    </p>
+  {% endif %}
+{% else %}
+  <p><a href="/">Start at the Beginning</a></p>
+{% endif %}
+{% endblock %}
